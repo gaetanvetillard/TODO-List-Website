@@ -1,0 +1,47 @@
+#navbar_ {
+    display: flex;
+    position: absolute;
+    right: 20;
+}
+
+.nav-item {
+    display: flex;
+}
+
+nav {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+footer {
+    background-color:#343a40;
+    color: white;
+    position: absolute;
+    width: 100%;
+    bottom: -125;
+    text-align: center;
+    padding: 25px;
+    font-size: 16px;
+}
+
+footer p {
+    margin: 0;
+    padding: 0;
+}
+
+.fa {
+    font-size: 18px;
+}
+
+#add, #delete {
+    padding: 9px
+}
+
+.divider {
+    display: block;
+    width: 200px;
+    height:3px;
+    background-color: #343a40;
+    margin: auto;
+    margin-top: -5px
+}

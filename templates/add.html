@@ -1,0 +1,57 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+<div class="container">
+    <form action="{{ url_for('new_item', owner_id=current_user.id )}}" method="post">
+        <div class="row" style="justify-content: center; margin-top:30px">
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="item" id="item" placeholder="Add New TODO Item..." required>
+            </div>
+            <div class="col-sm-3">
+                <input class="form-control" id="date" name="date" type="date" value="">
+            </div>
+            <button type="submit" class="btn btn-dark" name="add" id="add">
+                <i class="fas fa-plus-circle"></i>
+            </button>
+        </div>
+    </form>
+
+    <div class="divider"></div>
+    <h1 style="font-size:18px; text-align:center">TODO List</h1>
+    <div class="divider"></div>
+    {% for item in todo %}
+        <div class="row" style="justify-content: center; margin-top:15px; margin-bottom: -15px;">
+            <div class="col-sm-8" style="padding-top:5px; ">
+                {{ item.text }}
+            </div>
+            <div class="col-sm-3" style="padding-top:5px">
+                {{ item.date.split('-')[2] + "/" + item.date.split('-')[1] + "/" + item.date.split('-')[0]}}
+            </div>
+            <form action="{{ url_for('delete', id=item.id) }}" method="POST">
+                <button type="submit" class="btn btn-dark" name="delete" id="delete">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </form>
+        </div>
+    {% endfor %}
+    {% if expired != [] %}
+    <div class="divider"></div>
+    <h1 style="font-size:18px; text-align:center">Expired tasks</h1>
+    <div class="divider"></div>
+        {% for item in expired %}
+            <div class="row" style="justify-content: center; margin-top:15px; margin-bottom: -15px;">
+                <div class="col-sm-8" style="padding-top:5px; ">
+                    {{ item.text }}
+                </div>
+                <div class="col-sm-3" style="padding-top:5px">
+                    {{ item.date.split('-')[2] + "/" + item.date.split('-')[1] + "/" + item.date.split('-')[0]}}
+                </div>
+                <form action="{{ url_for('delete', id=item.id) }}" method="POST">
+                    <button type="submit" class="btn btn-dark" name="delete" id="delete">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+</div>

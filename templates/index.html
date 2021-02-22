@@ -1,0 +1,21 @@
+{% include 'header.html' %}
+
+{% if current_user.is_authenticated %}
+<h1 style="text-align:center; font-size:20px; font-weight:bold; margin-top: 15px; color:#343a40">TODO List of {{ current_user.username }}</h1>
+{% include 'add.html' %}
+
+{% else %}
+
+<div class="container" style="display:flex; justify-content:center; align-items:center">
+    <img src="static\1200px-GNOME_Todo_icon_2019.svg.png" width="40%" style="margin-top: 50px;">
+    <div>
+        <h1>You want to create your own TODO List?</h1>
+        <h2>Start Now with My TODO List !</h2>
+        <h3><a href="{{ url_for('register') }}">Sign Up For Free here</a></h3>
+        <p>Already Registered ? <a href="{{ url_for('login') }}">Log in here</a></p>
+    </div>
+</div>
+
+{% endif%}
+
+{% include 'footer.html' %}
